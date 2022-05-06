@@ -10,6 +10,7 @@ Consider the basic concepts and develop the functionality that is found in each 
 - useState
 - useEffect
 - CSS
-- Props
+- **Props**. Component Arguments
+- Work with **lists**. Converting an **array of objects to an array of React elements**
 
 
