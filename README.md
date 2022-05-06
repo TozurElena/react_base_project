@@ -5,6 +5,8 @@ Consider the basic concepts and develop the functionality that is found in each 
 ## Content
 
 - JSX
+- controlled **Input**
+- functional and class components
 - useState
 - useEffect
 - CSS
