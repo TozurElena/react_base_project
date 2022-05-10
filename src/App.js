@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import ClassCounter from './components/ClassCounter';
 import Counter from './components/Counter';
-import PostItems from './components/PostItems';
+import PostForm from './components/PostForm';
+
 import PostList from './components/PostList';
+
 import './styles/App.css'
 
 function App() {
@@ -13,6 +15,10 @@ function App() {
     {id:3, title: 'JavaScript 3', body: 'Description'}
   ])
   
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost])
+  } 
+  
   
   return (
     <div className="App">
@@ -20,11 +26,7 @@ function App() {
       <h2>{value}</h2>
       <input type="text" value={value} onChange={event => setValue(event.target.value)}/>
       <ClassCounter/>
-      <form>
-        <input type="text" placeholder='Name de post'/>
-        <input type="text" placeholder='Description de post'/>
-        <button>Creer de post</button>
-      </form>
+      <PostForm create={createPost}/>
       <PostList posts={posts} title="Les posts de JS"/>
       
       
