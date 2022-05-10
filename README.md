@@ -13,6 +13,7 @@ Consider the basic concepts and develop the functionality that is found in each 
 - **Props**. Component Arguments
 - Work with **lists**. Converting an **array of objects to an array of React elements**
 - Creation of UI library. First components. CSS modules. props **children**
-- 
+- **Sorting**. Drop-down list
+- **Search**. Filtration.
 
 
