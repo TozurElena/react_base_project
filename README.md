@@ -16,6 +16,7 @@ Consider the basic concepts and develop the functionality that is found in each 
 - **Sorting**. Drop-down list
 - **Search**. Filtration.
 - **Modal**
+- **Animation** React transition group
 
 
 ## Hosting
