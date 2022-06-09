@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import ClassCounter from './components/ClassCounter';
 import Counter from './components/Counter';
 import PostForm from './components/PostForm';
 
 import PostList from './components/PostList';
+import MyButton from './components/UI/button/MyButton';
 import MyInput from './components/UI/input/MyInput';
+import MyModal from './components/UI/MyModal/MyModal';
 import MySelect from './components/UI/select/MySelect';
 
 import './styles/App.css'
@@ -19,17 +21,23 @@ function App() {
   const [selectedSort, setSelectedSort] = useState('')
   const [searchQuery, setSearchQuery] = useState('')
 
-  function getSortedPosts() {
+  const [modal, setModal] = useState(false);
+
+  const sortedPosts = useMemo(() => {
     if (selectedSort) {
       return [...posts].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]))
     }
     return posts;
-  }
+  }, [selectedSort, posts]);
 
-  const sortedPosts = getSortedPosts()
+  const sortedAndSearchPosts = useMemo(() => {
+    return sortedPosts.filter(post => post.title.includes(searchQuery))
+  }, [searchQuery, sortedPosts])
   
   const createPost = (newPost) => {
     setPosts([...posts, newPost])
+    // fermer Modal
+    setModal(false);
   } 
   
   // get post from component child
@@ -43,13 +51,19 @@ function App() {
   
   return (
     <div className="App">
+    
       <Counter/>
       <h2>{value}</h2>
       <input type="text" value={value} onChange={event => setValue(event.target.value)}/>
       <ClassCounter/>
-      <PostForm create={createPost}/>
+      
       <hr style={{margin: '15px 0'}}/>
-
+      <MyButton onClick={() => setModal(true)}>
+        Creer user
+      </MyButton>
+      <MyModal visible={modal} setVisible={setModal}>
+        <PostForm create={createPost}/>
+      </MyModal>
       <div>
         <MyInput
           value={searchQuery}
@@ -68,7 +82,7 @@ function App() {
         />
       </div>
       {posts.length !== 0
-        ? <PostList remove={removePost} posts={sortedPosts} title="Les posts de JS"/>
+        ? <PostList remove={removePost} posts={sortedAndSearchPosts} title="Les posts de JS"/>
         : <h2>Posts n'ont pas été trouvés</h2>
         }
       
