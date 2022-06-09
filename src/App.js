@@ -59,7 +59,7 @@ function App() {
       
       <hr style={{margin: '15px 0'}}/>
       <MyButton onClick={() => setModal(true)}>
-        Creer user
+        Creer post
       </MyButton>
       <MyModal visible={modal} setVisible={setModal}>
         <PostForm create={createPost}/>
