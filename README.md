@@ -15,6 +15,7 @@ Consider the basic concepts and develop the functionality that is found in each 
 - Creation of UI library. First components. CSS modules. props **children**
 - **Sorting**. Drop-down list
 - **Search**. Filtration.
+- **Modal**
 
 
 ## Hosting
